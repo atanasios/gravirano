@@ -1,13 +1,20 @@
 import Map from "../models/map.model.js";
+import { uploadFile } from "../s3.js";
 
 export const uploadMap = async() => {
     try {
-        const {name, price, image, dimensions} = req.body;
+        const {name, price, dimensions} = req.body;
+
+        if (!req.file) {
+            return res.status(400).json({ message: "No image file provided! "});
+        }
+
+        const imageUrl = await uploadFile(req.file.buffer, req.file.originalName, req.file.mimetype);
 
         const newMap = new Map({
             name,
             price,
-            image,
+            image: imageUrl,
             dimensions
         });
 

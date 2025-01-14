@@ -1,0 +1,4 @@
+gravirano-be/node_modules/
+gravirano-fe/node_modules/
+gravirano-mobile/node_modules/
+*.env

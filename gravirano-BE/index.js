@@ -16,10 +16,6 @@ app.use(express.json())
 
 app.use(mapRoutes)
 
-app.get('/', (req, res) => {
-    res.send('Welcome to gravirano-be');
-});
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     connectToMongoDB();
